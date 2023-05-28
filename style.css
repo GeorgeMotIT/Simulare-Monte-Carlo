@@ -1,0 +1,412 @@
+html {
+    font-family: poppins, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+ img {
+    max-width: 100%;
+ }
+
+body {
+    background-color: whitesmoke;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.form {
+    width: 80%;
+    max-width: 900px;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 5px black;
+}
+
+.form-container {
+    display: flex;
+    padding: 1rem;
+}
+
+.form-left {
+background-image: url("assets/background-dashboard-blue.jpeg"); 
+background-repeat: no-repeat;
+background-size: cover;
+width: 400px;
+height: 568px;
+padding: 3rem 2rem;
+display: flex;
+flex-direction: column;
+gap: 2rem;
+border-radius: 1rem;
+}    
+
+.circle {
+    width:40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.active .circle {
+    background-color: lightgray !important;
+    color: darkblue !important;
+}
+
+/* .err {
+    border: 2px solid red !important;
+} */
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: .5rem; 
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.step-content span {
+    color: lightgray;
+    font-size: 13px;
+}
+
+.step-content b{
+    color: white;
+}
+
+.pas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pas .header {
+    margin-bottom: auto;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+}
+
+.header .title {
+    color: darkblue;
+}
+
+.header .subtitle {
+    color: darkgray;
+}
+
+.pas-urmator {
+    margin-top: auto;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+    background-color: darkblue;
+    color: white;
+    cursor: pointer;
+}
+
+.step-1 {
+    display: flex;
+    width: 90%;
+    padding-left: 1rem;
+}
+
+.step-1 form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.label {
+    color: darkblue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step-1 form input {
+    padding: 0.5rem;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+
+}
+
+.step-1 form input:focus {
+    outline-color: blue;
+}
+
+.form input::placeholder {
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+/* .form .error {
+    display: none;
+    color: red;
+    font-size: 0.9rem;
+    font-weight: 500;
+} */
+
+.masculin {
+    font-weight: 500;
+    color: #0D78FF;
+}
+
+.masculin input {
+    accent-color: #0D78FF;
+}
+
+.feminin {
+    font-weight: 500;
+    color: #ef7000;
+}
+
+.feminin input {
+    accent-color: #ef7000;
+}
+
+.step-2 {
+    display: none;
+    width: 90%;
+    padding-left: 1rem;
+}
+
+.step-2 form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.step-2 form input {
+    padding: 0.5rem;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+
+}
+
+.step-2 form input:focus {
+    outline-color: blue;
+}
+
+.buton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pas-anterior {
+    margin-top: auto;
+    margin-bottom: 2rem;
+    border: none;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 7px;
+    background-color: transparent;
+    color: darkgray;
+    cursor: pointer;
+}
+
+.step-3, 
+.step-4 {
+    display: none;
+    width: 90%;
+    padding-left: 1rem;
+}
+
+.step-3 form, 
+.step-4 form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.step-3 select,
+.step-4 select {
+    padding: 0.5rem;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.step-3 form input,
+.step-4 form input {
+    padding: 0.5rem;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+
+}
+
+.step-3 form input:focus,
+.step-4 form input:focus {
+    outline-color: blue;
+}
+
+.step-3 select,
+.step-4 select {
+    outline-color: blue;
+}
+
+
+
+.step-5 {
+    display: none;
+    width: 90%;
+    padding-left: 1rem;
+}
+
+
+.pilon2,
+.pilon3 {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.pilon2 .title, 
+.pilon3 .title
+{
+    color: darkblue;
+}
+
+.pensionare {
+    display: flex;
+    flex-direction: column;
+    padding-right: .5rem;
+    color: darkgray;
+    justify-content: center;
+    border-right: 2px solid darkgray;
+}
+
+.scenarii {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: .5rem;
+}
+
+.p2-data-pensionare,
+.p3-data-pensionare {
+    color: darkblue;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.scenarii .subtitle {
+    font-weight: 600;
+    color: darkblue;
+}
+
+.subtitle-scenariu {
+    color: darkgray;
+}
+
+.valoare-p2,
+.valoare-p3 {
+    color: darkblue;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pesimist {
+    color: orangered;
+}
+
+.optimist {
+    color: green;
+}
+
+@media screen and (max-width:800px) {
+    body{
+        position: relative;
+    }
+
+    .form-left {
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        flex-direction: row;
+        height: 200px;
+        background-size: cover;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        z-index: -1;
+        border-radius: 0;
+    }
+
+    .step-content {
+        display: none;
+    }
+
+    .form {
+        position: absolute;
+        top:15%;
+        max-width: 75%;
+        min-width: 375px;
+    }
+
+    /* .form-container {
+        padding: 1rem ;
+    } */
+
+    .buton {
+        position: sticky;
+        bottom: 0;
+        background-color: white;
+        right:0;
+        left: 0;
+        height: 100px;
+        padding-inline: 1rem;
+    }
+
+    /* .step-1 .buton button {
+        margin: auto 0 auto auto;
+    } */
+
+    .pas .header {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        line-height: 1.5rem;
+      }
+
+    .pas {
+        gap: 1rem;
+        width: 100%;
+    }
+    
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulare Monte Carlo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js" integrity="sha512-VW8/i4IZkHxdD8OlqNdF7fGn3ba0+lYqag+Uy4cG6BtJ/LIr8t23s/vls70pQ41UasHH0tL57GQfKDApqc9izA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="form">
+        <div class="form-container">
+            <!-- inceput left sidebar-->
+            <div class="form-left">
+                <div class="step active">
+                    <div class="circle">1</div>
+                    <div class="step-content">
+                        <span>Pasul 1</span>
+                        <b>Despre tine</b>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="circle">2</div>
+                    <div class="step-content">
+                        <span>Pasul 2</span>
+                        <b>Venituri</b>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="circle">3</div>
+                    <div class="step-content">
+                        <span>Pasul 3</span>
+                        <b>Info Pilon 2</b>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="circle">4</div>
+                    <div class="step-content">
+                        <span>Pasul 4</span>
+                        <b>Info Pilon 3</b>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="circle">5</div>
+                    <div class="step-content">
+                        <span>Pasul 5</span>
+                        <b>Rezultate</b>
+                    </div>
+                </div>
+            </div>
+            <!--final left sidebar-->
+            <!--pasul 1-->
+            <div class="pas step-1">
+                <div class="header">
+                    <h1 class="title">Despre tine</h1>
+                    <p class="subtitle">Spune-mi câteva informații despre tine care să mă ajute să iți ofer o soluție personalizată.</p>
+                </div>
+                <form>
+                    <div class="label">
+                        <label for="nume">Nume</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>  
+                    <input type="text" required id="nume" placeholder="Nume">
+                    <div class="label">
+                        <label for="prenume">Prenume</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>  
+                    <input type="text" required id="prenume" placeholder="Prenume">
+                    <div class="label">
+                        <label for="data-nasterii">Data nașterii</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>  
+                    <input type="date" min="1961-06-01" max="2005-06-01" required id="data-nasterii">              
+                    <div class="gen">
+                        <div class="label">
+                            <label>Gen</label>
+                        </div>
+                        <div class="masculin">
+                            <input type="radio" name="buton-gen" id="masculin" value="masculin" checked>
+                            <label for="masculin">Masculin</label>
+                        </div>
+                        <div class="feminin">
+                            <input type="radio" name="buton-gen" id="feminin" value="feminin">
+                            <label for="feminin">Feminin</label>
+                        </div>
+                    </div>
+                </form>    
+                <div class="buton">
+                    <button onclick="pasul1()" class="pas-urmator">Pasul următor</button>
+                </div>
+            </div>    
+            <!--final pasul 1-->
+            <!--pasul 2-->
+            <div class="pas step-2">
+                <div class="header">
+                    <h1 class="title">Date financiare</h1>
+                    <p class="subtitle">Spune-mi câteva informații despre veniturile tale</p>
+                </div>
+                <form>
+                    <div class="label">
+                        <label for="salariu">Salariu brut lunar</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>
+                    <input type="number" required id="salariu" min="3000" value="3000">
+                    <div class="label">
+                        <label for="crestere-salariala">Creștere salarială anuală așteptată (%)</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>
+                    <input type="number" required id="crestere-salariala" min="0" max="30" value="0">
+                </form>
+                <div class="buton">
+                    <button class="pas-anterior">Pasul anterior</button>
+                    <button class="pas-urmator" onclick="pasul2()">Pasul următor</button>
+                </div>
+            </div>
+            <!--final pasul 2-->
+            <!--pasul 3-->
+            <div class="pas step-3">
+                <div class="header">
+                    <h1 class="title">Pilon 2</h1>
+                    <p class="subtitle">Spune-mi câteva informații despre contul tău de Pilon 2</p>
+                </div>
+                <form>
+                    <div class="label">
+                        <label>La ce fond ești sau vrei să fii participant?</label>
+                    </div>
+                    <select name="FPAP" id="fonduri-p2">
+                        <option value="Aripi">FPAP Aripi</option>
+                        <option value="AZT">FPAP AZT Viitorul Tau</option>
+                        <option value="BCR">FPAP BCR</option>
+                        <option value="BRD">FPAP BRD</option>
+                        <option value="Metropolitan">FPAP Metropolitan Life</option>
+                        <option value="NN">FPAP NN</option>
+                        <option value="Vital">FPAP Vital</option>
+                    </select>
+                    <div class="label">
+                        <label for="pilon2-cont">Suma acumulată deja în contul tău de Pilon2:</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>
+                    <input type="number" required id="pilon2-cont" placeholder="13.000" min="0" value="0">
+                </form>
+                <div class="buton">
+                    <button class="pas-anterior">Pasul anterior</button>
+                    <button class="pas-urmator" onclick="pasul3()">Pasul următor</button>
+                </div>
+            </div>
+            <!--final pasul 3-->
+            <!--pasul 4-->
+            <div class="pas step-4">
+                <div class="header">
+                    <h1 class="title">Pilon 3</h1>
+                    <p class="subtitle">Spune-mi câteva informații despre contul tău de Pilon 3</p>
+                </div>
+                <form>
+                    <div class="label">
+                        <label>La ce fond ești sau vrei să fii participant?</label>
+                    </div>
+                    <select name="FPF" id="fonduri-p3">
+                        <option value="Aegon">FPF Aegon Esential</option>
+                        <option value="AZTModerato">FPF AZT Moderato</option>
+                        <option value="AZTVivace">FPF AZT Vivace</option>
+                        <option value="BRDMedio">FPF BRD Medio</option>
+                        <option value="BCRPlus">FPF BCR Plus</option>
+                        <option value="NNActiv">FPF NN Activ</option>
+                        <option value="NNOptim">FPF NN Optim</option>
+                        <option value="PensiaMea">FPF Pensia Mea</option>
+                        <option value="Raiffeisen">FPF Raiffeisen Acumulare</option>
+                        <option value="Stabil">FPF Stabil</option>
+                    </select>
+                    <div class="label">
+                        <label for="contributie-p3">Contribuție lunară</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>
+                    <input type="number" required id="contributie-p3" min="0" value="0">
+                    <div class="label">
+                        <label for="pilon3-cont">Suma acumulată deja în contul tău de Pilon3:</label>
+                        <!-- <p class="error">Acest camp este obligatoriu</p> -->
+                    </div>
+                    <input type="number" required id="pilon3-cont" min="0" value="0">
+                </form>
+                <div class="buton">
+                    <button class="pas-anterior">Pasul anterior</button>
+                    <button class="pas-urmator" onclick="pasul4()">Pasul următor</button>
+                </div>
+            </div>
+            <!--final pasul 4-->
+            <!--pasul 5-->
+            <div class="pas step-5">
+                <div class="header">
+                    <h1 class="title">Rezultate</h1>
+                    <p class="subtitle" id="rezumat"></p>
+                </div>
+                <div class="pilon2">
+                    <div class="pensionare">
+                        <h1 class="title">Pilon 2</h1>
+                        <p class="subtitle">Dată pensionare</p>
+                        <div class="p2-data-pensionare"></div>
+                    </div>
+                    <div class="scenarii">
+                        <p class="subtitle">Valoarea contului tău (lei)</p>
+                        <div class="scenariu-pesimist">
+                            <p class="subtitle-scenariu">Scenariu pesimist</p>
+                            <div class="valoare-p2 pesimist" id="pesimist-p2"></div>
+                        </div>
+                        <div class="scenariu-mediu">
+                            <p class="subtitle-scenariu">Scenariu mediu</p>
+                            <div class="valoare-p2 mediu" id="mediu-p2"></div>
+                        </div>
+                        <div class="scenariu-optimist">
+                            <p class="subtitle-scenariu">Scenariu optimist</p>
+                            <div class="valoare-p2 optimist" id="optimist-p2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pilon3">
+                    <div class="pensionare">
+                        <h1 class="title">Pilon 3</h1>
+                        <p class="subtitle">Dată pensionare</p>
+                        <div class="p3-data-pensionare"></div>
+                    </div>
+                    <div class="scenarii">
+                        <p class="subtitle">Valoarea contului tău (lei)</p>
+                        <div class="scenariu-pesimist">
+                            <p class="subtitle-scenariu">Scenariu pesimist</p>
+                            <div class="valoare-p3 pesimist" id="pesimist-p3"></div>
+                        </div>
+                        <div class="scenariu-mediu">
+                            <p class="subtitle-scenariu">Scenariu mediu</p>
+                            <div class="valoare-p3 mediu" id="mediu-p3"></div>
+                        </div>
+                        <div class="scenariu-optimist">
+                            <p class="subtitle-scenariu">Scenariu optimist</p>
+                            <div class="valoare-p3 optimist" id="optimist-p3"></div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <script src="./montecarlo.js"></script>
+</body>
+</html>
