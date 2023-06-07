@@ -81,6 +81,7 @@ let data9 = new Date("1962/09/01");
 let data10 = new Date("1962/04/01");
 let data11 = new Date("1961/11/01");
 let data12 = new Date("1961/06/01");
+const womenAge = [data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12];
 
 let dataPensionareP2;
 let dataPensionareP3;
@@ -99,21 +100,17 @@ function pasul1() {
     if (gen()==="M") {
         dataPensionareP2 = addMonths(dobP2, 780);
     }
-    else {
-            if (dobP2>data1) {dataPensionareP2 = addMonths(dobP2, 756)}
-            else {if (dobP2>data2) {dataPensionareP2 = addMonths(dobP2, 755)}
-                        else {if (dobP2>data3) {dataPensionareP2 = addMonths(dobP2, 754)}
-                            else {if (dobP2>data4) {dataPensionareP2 = addMonths(dobP2, 753)}
-                                else {if (dobP2>data5) {dataPensionareP2 = addMonths(dobP2, 752)}
-                                    else {if (dobP2>data6) {dataPensionareP2 = addMonths(dobP2, 751)}
-                                        else {if (dobP2>data7) {dataPensionareP2 = addMonths(dobP2, 750)}
-                                            else {if (dobP2>data8) {dataPensionareP2 = addMonths(dobP2, 749)}
-                                                else {if (dobP2>data9) {dataPensionareP2 = addMonths(dobP2, 748)}
-                                                    else {if (dobP2>data10) {dataPensionareP2 = addMonths(dobP2, 747)}
-                                                        else {if (dobP2>data11) {dataPensionareP2 = addMonths(dobP2, 746)}
-                                                            else {dataPensionareP2 = addMonths(dobP2, 745)}
-                }}}}}}}}}}
+    else if (dobP2>=womenAge[0]) {
+        dataPensionareP2 = addMonths(dobP2, 756);
         }
+        else if (dobP2<womenAge[11]) {dataPensionareP2 = addMonths(dobP2, 745);
+        } else {
+            for (let i=1; i<=11; i++) {
+                if(dobP2<womenAge[i-1] && dobP2>=womenAge[i]) {
+                    dataPensionareP2 = addMonths(dobP2, (756-i));
+                }
+        }
+    }
 
 //determinare perioada ramasa pana la pensionare de utilizat in pasii urmatori si inserare data pensionare in ultima pagina        
     differenceP3 = differenceInMonths(new Date(dataPensionareP3), new Date());
@@ -290,8 +287,6 @@ function pasul4() {
 //generarea unui singur scenariu privind rezultatul investirii contributiilor lunare cu un randament mediu si volatilitate date si conform unei probabilitati distribuite normal    
     let mc = [];
     let scenariu = [];
-    console.log("sa vedem cat a ramas differennce p3")
-    console.log(differenceP3);
     function rulareScenariiP3(){
         scenariu[0]=contributiiP3[0]*(1+norminv(math.random(),mean,stDev));
         for (k=1; k < differenceP3; k++) {
