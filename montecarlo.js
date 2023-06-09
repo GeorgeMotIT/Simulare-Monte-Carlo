@@ -221,27 +221,27 @@ function pasul3() {
     const fondP2=document.getElementById('fonduri-p2').value;
     contributiiP2[0]= contributiiP2[0] + parseInt(soldP2);
 //stabilire randament si volatilitate in functie de fondul ales    
-    let aripi = new Fond ('Aripi',0.0062, 0.0149);
-    let azt = new Fond ('AZT', 0.0056, 0.0138);
-    let bcr = new Fond ('BCR', 0.0060, 0.0144);
-    let brd = new Fond ('BRD', 0.0051, 0.0128);
-    let metropolitan = new Fond ('Metropolitan', 0.0063, 0.0128);
-    let nn = new Fond ('NN', 0.0062, 0.0138);
-    let vital = new Fond('Vital', 0.0057, 0.0124);
+    let aripi = new Fond ('Aripi',0.00615014833925152, 0.0148675129711954);
+    let azt = new Fond ('AZT', 0.00561695027266273, 0.0137565262524001);
+    let bcr = new Fond ('BCR', 0.00603385919710083, 0.0144081363530737);
+    let brd = new Fond ('BRD', 0.00512647339866225, 0.0127945299929529);
+    let metropolitan = new Fond ('Metropolitan', 0.00628127836485134, 0.0127861772792893);
+    let nn = new Fond ('NN', 0.00621812405008594, 0.0138240584340827);
+    let vital = new Fond('Vital', 0.00574548756067463, 0.0124298436110774);
     let fonduriP2 = [aripi, azt, bcr, brd, metropolitan, nn, vital];
-    let selectedFundP2 = fonduriP2.filter(fund => fund.fundName == fondP2);
+    let selectedFundP2 = fonduriP2.find(fund => fund.fundName == fondP2);
 
 //generarea unui singur scenariu privind rezultatul investirii contributiilor lunare cu un randament mediu si volatilitate date si conform unei probabilitati distribuite normal    
     let mc = [];
     let scenariu = [];
     function rulareScenariiP2(){
-        scenariu[0]=contributiiP2[0]*(1+norminv(math.random(),selectedFundP2[0].fundMean,selectedFundP2[0].fundStDev));
+        scenariu[0]=contributiiP2[0]*(1+norminv(math.random(),selectedFundP2.fundMean,selectedFundP2.fundStDev));
         for (k=1; k < differenceP2; k++) {
-            scenariu[k] = (scenariu[k-1]+contributiiP2[k])*(1+norminv(math.random(),selectedFundP2[0].fundMean,selectedFundP2[0].fundStDev));
+            scenariu[k] = (scenariu[k-1]+contributiiP2[k])*(1+norminv(math.random(),selectedFundP2.fundMean,selectedFundP2.fundStDev));
         }  
         return scenariu[scenariu.length-1];
     }
-
+console.log(scenariu);
 //generarea a 10.000 de simulari si inserare in pagina de rezultate percentila 10(scenariu pesimist), percentila 50 (scenariu mediu) si percentile 90 (scenariu optimist)
     for (j=0; j<10000; j++) {    
         mc.push(rulareScenariiP2());
@@ -264,26 +264,26 @@ function pasul4() {
         contributiiP3.push(contributiiP3[i]);
     }
 //stabilire randament si volatilitate in functie de fondul ales    
-    let aegon = new Fond ('Aegon',0.0029, 0.0168);
-    let aztmoderato = new Fond ('AZTModerato', 0.0048, 0.0151);
-    let aztvivace = new Fond ('AZTVivace', 0.0049, 0.0193);
-    let bcrplus = new Fond ('BCRPlus', 0.0043, 0.0126);
-    let brdmedio = new Fond ('BRDMedio', 0.0035, 0.0129);
-    let pensiamea = new Fond ('PensiaMea', 0.0041, 0.0112);
-    let nnactiv = new Fond ('NNActiv', 0.0053, 0.0178);
-    let nnoptim = new Fond ('NNOptim', 0.0051, 0.0153);
-    let raiffeisen = new Fond('Raiffeisen', 0.0056, 0.0150);
-    let stabil = new Fond('Stabil', 0.0045, 0.0145);
+    let aegon = new Fond ('Aegon',0.00285007101114853, 0.0168006909467267);
+    let aztmoderato = new Fond ('AZTModerato', 0.00475641612342395, 0.0150780836108091);
+    let aztvivace = new Fond ('AZTVivace', 0.00494048695349917, 0.0192685247797806);
+    let bcrplus = new Fond ('BCRPlus', 0.00432884751188297, 0.0126454886651071);
+    let brdmedio = new Fond ('BRDMedio', 0.00354452120469458, 0.0129360312570334);
+    let pensiamea = new Fond ('PensiaMea', 0.0040881335144684, 0.0112296032942495);
+    let nnactiv = new Fond ('NNActiv', 0.00531434884504096, 0.0177798267374991);
+    let nnoptim = new Fond ('NNOptim', 0.00509028930455701, 0.0152767289267626);
+    let raiffeisen = new Fond('Raiffeisen', 0.00564557664504505, 0.0149838443374733);
+    let stabil = new Fond('Stabil', 0.00451309915120776, 0.0144961494417246);
     let fonduriP3 = [aegon, aztmoderato, aztvivace, bcrplus, brdmedio, pensiamea, nnactiv, nnoptim, raiffeisen, stabil];
-    let selectedFundP3 = fonduriP3.filter(fund => fund.fundName == fondP3);
-    console.log(selectedFundP3);
+    let selectedFundP3 = fonduriP3.find(fund => fund.fundName == fondP3);
+
 //generarea unui singur scenariu privind rezultatul investirii contributiilor lunare cu un randament mediu si volatilitate date si conform unei probabilitati distribuite normal    
     let mc = [];
     let scenariu = [];
     function rulareScenariiP3(){
-        scenariu[0]=contributiiP3[0]*(1+norminv(math.random(),selectedFundP3[0].fundMean,selectedFundP3[0].fundStDev));
+        scenariu[0]=contributiiP3[0]*(1+norminv(math.random(),selectedFundP3.fundMean,selectedFundP3.fundStDev));
         for (k=1; k < differenceP3; k++) {
-            scenariu[k] = (scenariu[k-1]+contributiiP3[k])*(1+norminv(math.random(),selectedFundP3[0].fundMean,selectedFundP3[0].fundStDev));
+            scenariu[k] = (scenariu[k-1]+contributiiP3[k])*(1+norminv(math.random(),selectedFundP3.fundMean,selectedFundP3.fundStDev));
         }  
         return scenariu[scenariu.length-1];
     }
